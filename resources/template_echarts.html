@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apache ECharts — Architecture Java &amp; Spring Boot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="resources/template_echarts.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="resources/template_echarts.js"></script>
+
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon">EC</div>
+      <div>
+        <div class="brand-title">Apache ECharts — Architecture Java</div>
+        <div class="brand-sub">Graphe interactif Spring Boot multi-dépôts</div>
+      </div>
+    </div>
+
+    <div class="stats-pills" id="statsContainer"></div>
+
+    <div class="controls-group">
+      <div class="search-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Classe, package, /route, méthode..." />
+      </div>
+      <button class="btn" id="btnCrossOnly">Inter-dépôts</button>
+      <button class="btn" id="btnLayout">Vue Circulaire</button>
+      <button class="btn" id="btnTheme">☀️</button>
+    </div>
+  </header>
+
+  <div class="filter-bar" id="repoFilterBar">
+    <span class="filter-label">Dépôts :</span>
+    <!-- Les puces de filtrage par dépôt sont injectées dynamiquement ici -->
+    <span class="interface-hint"><i class="shape-icon shape-diamond"></i>Interface Java</span>
+  </div>
+
+  <div id="workspace">
+    <div id="chart"></div>
+
+    <div class="floating-controls">
+      <button class="btn" id="btnExportPng" title="Exporter en image PNG">Export PNG</button>
+      <button class="btn" id="btnReset" title="Réinitialiser la vue et les filtres">Reset</button>
+    </div>
+
+    <aside id="sidebar"></aside>
+  </div>
+
+<script>
+    const graphData = __ECHARTS_DATA_JSON__;
+    loadGraphData(graphData);
+</script>
+</body>
+</html>
